@@ -1,0 +1,17 @@
+mui core, mui icons, tailwind install
+wrap all inside browser-router in index.js
+
+
+
+
+
+
+
+
+
+Spring boot
+
+Create new - spring starter project
+Dependencies spring web, data JPA,validation,spring dev tools,security, mysqldriver,lombok
+
+

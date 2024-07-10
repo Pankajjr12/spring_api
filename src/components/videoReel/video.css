@@ -3,6 +3,7 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  background-color: black;
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
@@ -40,7 +41,7 @@
 .reel-user {
   position: absolute;
   z-index: 2;
-  padding: 10px;
+
 }
 
 .reel-actions {
@@ -57,7 +58,7 @@
 }
 
 .reel-user {
-  top: 10px;
+  bottom: 10px;
   left: 10px;
   display: flex;
   align-items: center;
@@ -84,19 +85,18 @@
 
 .follow-button {
   background-color: transparent;
-  position: absolute;
   border: 1px solid white;
   padding: 3px 10px;
   border-radius: 5px;
   font-size: 12px;
-  margin-left: 114px;
-  margin-top: 3px;
+  
 }
 
 .reel-user .music-details {
   font-size: 12px;
   font-style: italic;
   text-decoration: solid;
+
 }
 @keyframes rainbow {
   0% {

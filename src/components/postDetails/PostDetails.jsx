@@ -6,6 +6,7 @@ import { Divider } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { findPostsById } from "../../actions/PostAction";
 import { store } from "../../store";
+import ReplyCard from "../middle/ReplyCard";
 
 const PostDetails = () => {
   const {id}= useParams();
@@ -39,13 +40,15 @@ const PostDetails = () => {
       </section>
 
       <section>
-        {auth.findUser && post?.post?.replyPosts
+      {post.post?.replyPosts
           .slice()
           .reverse()
-          .map((item) => (
-            <PostCard item={item} />
+          .map((reply) => (
+            <ReplyCard reply={reply} />
           ))}
       </section>
+
+      
     </>
   );
 };

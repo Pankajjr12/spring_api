@@ -34,11 +34,18 @@ const BottomBar = ({item}) => {
     history('/reels')
   }
 
+  const handleReloadPage = () => {
+    history('/home')
+    window.location.reload();
+    window.scrollTo(0, 0);
+  };
+
 
   const bottomBarItems = [
     {
-      link: "/",
+      link: "/home",
       icon: HomeLogo,
+      onClick: handleReloadPage,
     },
     {
       link: "/search",

@@ -39,13 +39,13 @@ const style = {
   },
 };
 
-export default function ReplyModal({ open, handleClose, item }) {
+export default function ReplyModal({ open, handleClose, item,reply }) {
   const [uploading, setUploading] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
   const navigate = useNavigate();
   const  auth  = useSelector(store => store.auth);
-
+  const post  = useSelector(store => store.post);
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -59,33 +59,32 @@ export default function ReplyModal({ open, handleClose, item }) {
 
   //   fetchData();
   // }, [dispatch, auth?.user?.id]);
-  const handleSubmit = (values,actions) => {
+
+
+
+  const handleSubmit = (values, actions) => {
+    console.log('Submitting form:', values);
+    // Dispatch action to create reply post
     dispatch(createReplyPost(values));
-    actions.resetForm();
-    setSelectedImage("");
-    handleClose();
-    console.log("handle submit", values);
+    actions.resetForm(); // Reset form after submission
+    setSelectedImage(""); // Clear any additional state related to the form
+    handleClose(); // Close the modal or perform other UI actions
   };
+  
 
   const formik = useFormik({
     initialValues: {
-      content: auth?.user?.content,
-      image: "",
+      content: reply?.user?.content,
+      image: reply?.user?.image,
       postId: item?.id,
     },
     validationSchema,
     onSubmit: handleSubmit,
   });
+  
 
-  useEffect(()=>{
+ 
 
-    formik.setValues({
-      content:  "",
-     
-      image:  "",
-    });
-
-  },[auth.user])
 
 
   const handleSelectImage = (event) => {
@@ -154,10 +153,12 @@ export default function ReplyModal({ open, handleClose, item }) {
                 <form onSubmit={formik.handleSubmit}>
                   <div>
                     <input
-                      type="text"
-                      name="content"
-                      value={formik.values.content}
-                      placeholder="type something..."
+                       type="text"
+                       name="content"
+                       value={formik.values.content}
+                       onChange={formik.handleChange}
+                       onBlur={formik.handleBlur}
+                       placeholder="type something..."
                       className={`border-none  outline-none text-xl bg-transparent`}
                       {...formik.getFieldProps("content")}
                       {...(formik.errors.content && formik.touched.content && (

@@ -159,7 +159,7 @@ const HomeSection = () => {
                     <div>
                       {selectedVideo && (
                         <LazyLoad height={200} once>
-                          <video autoPlay src={post?.video} />
+                          <video autoPlay src={selectedVideo} muted/>
                         </LazyLoad>
                       )}
                     </div>

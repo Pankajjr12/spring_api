@@ -121,7 +121,7 @@ const Profile = () => {
               variant="contained"
               sx={{ borderRadius: "20px" }}
             >
-              {auth.findUser?.followers?.includes(auth.user.id) ? "Unfollow" : "Follow"}
+               {auth.findUser?.followed ? "Unfollow" : "Follow"}
             </Button>
           )}
         </div>
@@ -177,7 +177,7 @@ const Profile = () => {
             </TabList>
           </Box>
           <TabPanel value="1">
-            {isProfileOwner || auth.findUser?.followers?.includes(auth.user.id) ? (
+            {isProfileOwner || auth.findUser?.followers?.includes(auth?.user?.id) ? (
               post?.postById?.map((item) => <PostCard key={item.id} item={item} />)
             ) : (
               <p>Follow to see other users' posts.</p>

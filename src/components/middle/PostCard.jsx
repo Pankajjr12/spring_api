@@ -217,7 +217,7 @@ const PostCard = ({ item }) => {
             <div className="py-5 flex flex-wrap justify-between items-center pe-1">
               <div
                 className={`space-x-2 lg:space-x-3 flex items-center ${
-                  item?.totalReplies && item.totalReplies.length > 0
+                  item?.totalReplies && item?.totalReplies.length > 0
                     ? "text-pink-600"
                     : "text-gray-500"
                 }`}
